@@ -1,0 +1,26 @@
+Starting web UI on port 8080...
+Warning: device login failed: auth request failed: Post "https://192.168.1.100:1337/auth": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+
+--- B3i Web UI Session Token: 7e1981e5a3e66eb3e9eee50cb88f7031 ---
+Access the UI at: http://localhost:8080/ui/?token=7e1981e5a3e66eb3e9eee50cb88f7031
+
+[GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
+
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /ui/*filepath             --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (3 handlers)
+[GIN-debug] HEAD   /ui/*filepath             --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (3 handlers)
+[GIN-debug] GET    /                         --> github.com/user/b3i/pkg/server.(*Server).Start.func2 (3 handlers)
+[GIN-debug] GET    /api/device               --> github.com/user/b3i/pkg/server.(*Server).handleGetDeviceInfo-fm (4 handlers)
+[GIN-debug] GET    /api/apps                 --> github.com/user/b3i/pkg/server.(*Server).handleListApps-fm (4 handlers)
+[GIN-debug] POST   /api/install              --> github.com/user/b3i/pkg/server.(*Server).handleInstallApp-fm (4 handlers)
+[GIN-debug] DELETE /api/apps/:id             --> github.com/user/b3i/pkg/server.(*Server).handleUninstallApp-fm (4 handlers)
+[GIN-debug] POST   /api/apps/:id/:action     --> github.com/user/b3i/pkg/server.(*Server).handleManageApp-fm (4 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :8080
+[GIN] 2026/05/23 - 10:33:52 | 401 |      75.616µs |       127.0.0.1 | GET      "/api/device"
+[GIN] 2026/05/23 - 10:33:52 | 200 |    3.016962ms |       127.0.0.1 | GET      "/ui/?token=---"
+[GIN] 2026/05/23 - 10:33:52 | 401 |      18.328µs |       127.0.0.1 | GET      "/api/device"

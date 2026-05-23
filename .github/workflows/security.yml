@@ -1,0 +1,23 @@
+name: Security Check
+
+on:
+  pull_request:
+    paths:
+      - 'pkg/device/**'
+      - 'internal/auth/**'
+      - '.github/workflows/**'
+      - 'Taskfile.yml'
+
+jobs:
+  security-review:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check for security sensitive changes
+        run: |
+          echo "This PR modifies security-sensitive files (TLS, Auth, or CI)."
+          echo "A human reviewer from the security team must approve this PR."
+          # In a real scenario, we might use a GitHub App or action to enforce this,
+          # but here we just flag it. GitHub's branch protection rules should be
+          # configured to require approval for these paths.
+          exit 1
+        continue-on-error: true # Don't block the whole CI, but show failure
