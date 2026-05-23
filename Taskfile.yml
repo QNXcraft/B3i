@@ -1,0 +1,29 @@
+version: '3'
+
+tasks:
+  build:
+    desc: Build the b3i binary
+    cmds:
+      - mkdir -p pkg/server/dist
+      - cp ui/dist/index.html pkg/server/dist/
+      - go build -o bin/b3i main.go
+
+  test:
+    desc: Run tests
+    cmds:
+      - go test ./...
+
+  build:all:
+    desc: Build for all platforms
+    cmds:
+      - mkdir -p pkg/server/dist
+      - cp ui/dist/index.html pkg/server/dist/
+      - GOOS=linux GOARCH=amd64 CGO_ENABLED=0 go build -o dist/b3i-linux-amd64 main.go
+      - GOOS=windows GOARCH=amd64 CGO_ENABLED=0 go build -o dist/b3i-windows-amd64.exe main.go
+      - GOOS=darwin GOARCH=amd64 CGO_ENABLED=0 go build -o dist/b3i-darwin-amd64 main.go
+      - GOOS=darwin GOARCH=arm64 CGO_ENABLED=0 go build -o dist/b3i-darwin-arm64 main.go
+
+  clean:
+    desc: Clean build artifacts
+    cmds:
+      - rm -rf bin/ dist/ pkg/server/dist/
